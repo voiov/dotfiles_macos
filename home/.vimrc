@@ -2,8 +2,8 @@ call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-easymotion'
 "Plug 'Valloric/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-airline'

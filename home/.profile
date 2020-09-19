@@ -4,7 +4,7 @@ if [ -z $_SET_PROFILE];then
 
 
 # set rust
-source	/Users/zaki/.cargo/env
+source	$HOME/.cargo/env
 export	RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export	RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
@@ -26,6 +26,9 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 # Flow keyword "fi" is the first line's end flag, MUSTN'T delete
 fi
 
+# HOMESHICK
+export HOMESHICK_DIR=/usr/local/opt/homeshick
+source "/usr/local/opt/homeshick/homeshick.sh"
 
 #if [[ `command -v task` ]]; then
 	#task next
