@@ -25,7 +25,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
-Plug 'lervag/vimtex'
 call plug#end()            " required
 
 "EasyMotion Config

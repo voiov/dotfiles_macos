@@ -27,6 +27,11 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 fi
 
 
-if [[ `command -v task` ]]; then
-	task next
-fi
+#if [[ `command -v task` ]]; then
+	#task next
+#else if [[ `command -v tb` ]]; then
+	#echo "==================== TO DO ===================="
+	#tb --timeline
+	#echo "==================== TO DO ===================="
+#fi
+#fi
