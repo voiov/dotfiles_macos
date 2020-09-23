@@ -4,9 +4,9 @@ if [ -z $_SET_PROFILE];then
 
 
 # set rust
-source	$HOME/.cargo/env
-export	RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-export	RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+if [ -f $HOME/.cargo/env ];then
+	source	$HOME/.cargo/env
+fi
 
 # alias
 if [[ `command -v typora` ]]; then

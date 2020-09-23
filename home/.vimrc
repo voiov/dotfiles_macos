@@ -3,7 +3,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-easymotion'
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
+Plug 'mattn/webapi-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-airline'
@@ -15,6 +16,8 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/indentLine'
+
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-startify'
 Plug 'plasticboy/vim-markdown'
@@ -45,17 +48,11 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 syntax on
 
-let g:vimtex_compiler_latexmk = {
-	\ 'options' : [
-	\   '-xelatex',
-	\   '-verbose',
-	\   '-file-line-error',
-	\   '-synctex=1',
-	\   '-interaction=nonstopmode',
-	\ ],
-	\}
-let g:vimtex_view_method='skim'
-
+"EditorConfig 
+let g:indentLine_char_list = ['┊', '┆', '¦', '|']
+let g:indentLine_setColors = 1
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '˽'
 
 " make YCM compatible with UltiSnips (using supertab)
 "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
