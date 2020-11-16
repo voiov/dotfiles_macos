@@ -2,7 +2,6 @@
 if [ -z $_SET_PROFILE];then
 	_SET_PROFILE=1
 
-
 # set rust
 if [ -f $HOME/.cargo/env ];then
 	source	$HOME/.cargo/env
@@ -38,3 +37,4 @@ source "/usr/local/opt/homeshick/homeshick.sh"
 	#echo "==================== TO DO ===================="
 #fi
 #fi
+
