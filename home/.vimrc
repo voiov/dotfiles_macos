@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-easymotion'

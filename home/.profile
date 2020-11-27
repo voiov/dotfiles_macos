@@ -15,11 +15,14 @@ if [[ `command -v fzf` ]]; then
 	alias	preview="fzf --preview 'bat --color \"always\" {}'"
 fi
 
+if [[ `command -v exa` ]]; then
+	alias	ls="exa"
+fi
 # Set ENV
 export	PATH=$PATH:$HOME/.local/bin
 export	FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 # 支持在 VS Code 里用 ctrl+o 来打开选择的文件
-export	EDITOR="vim"
+export	EDITOR="nvim"
 
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 # Flow keyword "fi" is the first line's end flag, MUSTN'T delete
