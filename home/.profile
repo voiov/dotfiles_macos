@@ -8,9 +8,9 @@ if [ -f $HOME/.cargo/env ];then
 fi
 
 # alias
-if [[ `command -v typora` ]]; then
+#if [[ `command -v typora` ]]; then
 	alias	typora="open -a typora"
-fi
+#fi
 if [[ `command -v fzf` ]]; then
 	alias	preview="fzf --preview 'bat --color \"always\" {}'"
 fi

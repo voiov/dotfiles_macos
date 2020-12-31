@@ -38,9 +38,9 @@ set tabstop=4
 set wildmenu
 "set wildmode=list,full
 syntax on
-if exists('$TMUX')
-	set term=screen-256color
-endif
+"if exists('$TMUX')
+	"set term=screen-256color
+"endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "防止粘贴文本自动加上注释
 "set completeopt=longest,menuone
 "----------键盘映射
