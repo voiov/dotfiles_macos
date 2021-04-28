@@ -19,12 +19,16 @@ if [[ `command -v exa` ]]; then
 	alias	ls="exa"
 fi
 # Set ENV
-export	PATH=$PATH:$HOME/.local/bin
+export	PATH="$PATH:$HOME/.local/bin"
+export	PATH="/usr/local/sbin:$PATH"
 export	FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 # 支持在 VS Code 里用 ctrl+o 来打开选择的文件
 export	EDITOR="nvim"
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles"
 # Flow keyword "fi" is the first line's end flag, MUSTN'T delete
 fi
 

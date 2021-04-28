@@ -2,18 +2,15 @@ call plug#begin()
 Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-easymotion'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-airline'
 Plug 'buoto/gotests-vim'
-"Plug 'ervandew/supertab'
 Plug 'fatih/vim-go',{ 'tag': '*' ,'do':':GoUpdateBinaries'}
 Plug 'majutsushi/tagbar'
 Plug 'godlygeek/tabular'
-"Plug 'junegunn/fzf', {'tag':'0.22.0','do':{ ->fzf#install()}} 
 Plug 'junegunn/fzf', {'do':{ ->fzf#install()}} 
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
