@@ -5,7 +5,7 @@ let coc_global_extensions=[
 			\ 'coc-json',
 			\ 'coc-prettier',
 			\ 'coc-eslint',
-			\ 'coc-rls',
+			"\ 'coc-rls',
 			\ 'coc-rust-analyzer',
 			\ 'coc-imselect',
 			\]
