@@ -7,28 +7,27 @@ if [ -f $HOME/.cargo/env ];then
 	source	$HOME/.cargo/env
 fi
 # source zsh-autosuggestions
-if [[ -f  /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh	
-fi
+#if [[ -f  /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+	#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh	
+#fi
 
 # autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+#[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 # fzf autocomplete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# alias
-#if [[ `command -v typora` ]]; then
-	#alias	typora="open -a typora"
-#fi
 
 if [[ `command -v fzf` ]]; then
 	alias	preview="fzf --preview 'bat --color \"always\" {}'"
 fi
 
+
 if [[ `command -v exa` ]]; then
 	alias	ls="exa"
-	alias   l="ls -l -h -G"
+	alias   l="ls -l -a -h -G"
 	alias   ll="ls -l -h"
+	alias	l2="ls -l -h -T -L2"
+	alias	l3="ls -l -h -T -L3"
+	alias	lt="l2"
 fi
 # Set ENV
 export	PATH="$PATH:$HOME/.local/bin"
@@ -49,15 +48,8 @@ fi
 export HOMESHICK_DIR=/usr/local/opt/homeshick
 source "/usr/local/opt/homeshick/homeshick.sh"
 
-
 alias ..="cd -"
-
-
-#if [[ `command -v task` ]]; then
-	#task next
-#else if [[ `command -v tb` ]]; then
-	#echo "==================== TO DO ===================="
-	#tb --timeline
-	#echo "==================== TO DO ===================="
-#fi
-#fi
+alias md='mkdir -p'
+alias rd=rmdir
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
