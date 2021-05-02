@@ -16,6 +16,7 @@ fi
 # fzf autocomplete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 if [[ `command -v fzf` ]]; then
 	alias	preview="fzf --preview 'bat --color \"always\" {}'"
 fi
@@ -36,20 +37,26 @@ export	FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 # 支持在 VS Code 里用 ctrl+o 来打开选择的文件
 export	EDITOR="nvim"
 
-#if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
-#export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-#export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
-#export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles"
-
-## Flow keyword "fi" is the first line's end flag, MUSTN'T delete
-fi
 
 # HOMESHICK
 export HOMESHICK_DIR=/usr/local/opt/homeshick
 source "/usr/local/opt/homeshick/homeshick.sh"
 
-alias ..="cd -"
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+
+alias ..="cd ./.."
+alias -- -="cd -"
 alias md='mkdir -p'
 alias rd=rmdir
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+## Flow keyword "fi" is the first line's end flag, MUSTN'T delete
+fi
+

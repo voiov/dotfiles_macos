@@ -33,19 +33,17 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
 	zsh-users/zsh-autosuggestions\
-	zdharma/fast-syntax-highlighting\
-	zdharma/history-search-multi-word\
-	zsh-users/zsh-completions
+	zdharma/fast-syntax-highlighting
 ### End of Zinit's installer chunk
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-
+zinit light zsh-users/zsh-completions
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
@@ -59,3 +57,5 @@ if [[ `command -v zoxide` ]]; then
 fi
 
 source ~/.profile
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
