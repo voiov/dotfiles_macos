@@ -16,8 +16,10 @@ set scrolloff=999
 set encoding=UTF-8
 set backspace=2
 set cursorline
-set nofoldenable
-set foldmethod=marker
+"set nofoldenable
+set foldmethod=syntax
+set foldlevelstart=1
+"let g:rust_fold = 1
 set hidden
 set cmdheight=2
 set updatetime=300

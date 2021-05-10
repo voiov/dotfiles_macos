@@ -40,12 +40,12 @@ zinit light-mode for \
 	zdharma/fast-syntax-highlighting
 ### End of Zinit's installer chunk
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice blockf
 zinit light zsh-users/zsh-completions
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 if [[ `command -v starship` ]]; then
 	eval "$(starship init zsh)"
@@ -59,3 +59,5 @@ fi
 source ~/.profile
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

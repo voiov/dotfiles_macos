@@ -18,6 +18,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'liuchengxu/vista.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'plasticboy/vim-markdown'
@@ -27,6 +28,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 "Plug 'vim-syntastic/syntastic'
 "Plug 'lervag/vimtex'
 "Plug 'voldikss/vim-floaterm'
@@ -41,8 +43,9 @@ let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 source $HOME/.local/config/vim/vimrc
 colorscheme gruvbox
-"colorscheme gruvbox8
 let g:airline_theme='gruvbox'
+"colorscheme nord
+"let g:airline_theme='nord'
 
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -115,8 +118,9 @@ set statusline+=%*
 let g:indentLine_char_list = ['┊', '┆', '¦', '|']
 let g:indentLine_setColors = 1
 let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '˽'
+"let g:indentLine_leadingSpaceChar = '˽'
 "let g:indentLine_leadingSpaceChar = '✂︎'
+
 "set leaderF
 "let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
@@ -142,10 +146,15 @@ map <silent> <F1> :NERDTreeToggle<CR>
 nmap <silent> <F8> :Vista!!<CR>
 
 "let g:clap_theme = 'atom_dark'
-"let g:clap_theme = 'nord'
+"let g:clap_theme = 'nord
+"let g:clap_theme = 'gruvbox'
 "let g:clap_theme = 'solarized_dark'
-let g:clap_theme = 'material_design_dark'
+"let g:clap_theme = 'material_design_dark'
 let g:clap_provider_alias={'rg':'grep'}
+let g:clap_layout = { 'relative': 'editor' }
+let g:clap_enable_background_shadow = v:false
+
+
 nnoremap <silent> <C-p> :Clap<CR>
 source $HOME/.local/config/vim/coc.vimrc
 
@@ -243,5 +252,5 @@ let g:mkdp_page_title = '「${name}」'
 let g:mkdp_filetypes = ['markdown']
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
+"nmap <C-p> <Plug>MarkdownPreviewToggle
 
