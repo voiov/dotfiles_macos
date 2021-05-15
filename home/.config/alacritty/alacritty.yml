@@ -682,7 +682,9 @@ mouse:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
+  - { key: F,  mods: Alt,           chars: "\x1bf"                       }
+  - { key: B,  mods: Alt,           chars: "\x1bb"                       }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

@@ -7,8 +7,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Do menu-driven completion.
 zstyle ':completion:*' menu select
 # formatting and messages
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # http://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
@@ -22,37 +22,34 @@ zstyle ':completion:*' group-name ''
 if [ -f $HOME/.cargo/env ];then
 	source	$HOME/.cargo/env
 fi
-# source zsh-autosuggestions
-#if [[ -f  /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-	#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh	
-#fi
 
-# autojump
-#[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-# fzf autocomplete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 if [[ `command -v fzf` ]]; then
 	alias	preview="fzf --preview 'bat --color \"always\" {}'"
 fi
 
-
 if [[ `command -v exa` ]]; then
 	alias	ls="exa"
-	alias   l="ls -l -a -h -G"
-	alias   ll="ls -l -h"
+	alias   l="ls -l  -h -T -L1"
+	alias   ll="ls -l -a  -G"
+	alias   l1="ls -l -h -T -L1"
 	alias	l2="ls -l -h -T -L2"
 	alias	l3="ls -l -h -T -L3"
 	alias	lt="l2"
 fi
+
+if [[ `command -v nvim` ]]; then
+	alias	vi=nvim
+	alias	vim=nvim
+fi
+
 # Set ENV
 export	PATH="$PATH:$HOME/.local/bin"
 export	PATH="/usr/local/sbin:$PATH"
 export	FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 # 支持在 VS Code 里用 ctrl+o 来打开选择的文件
 export	EDITOR="nvim"
-
 
 # HOMESHICK
 export HOMESHICK_DIR=/usr/local/opt/homeshick
@@ -63,7 +60,6 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
-
 
 alias ..="cd ./.."
 alias -- -="cd -"

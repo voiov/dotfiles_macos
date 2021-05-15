@@ -4,39 +4,40 @@
 
 
 
-if has('gui_running')
-    "set background=light
-    set background=dark
-else
-    set background=dark
-endif
-set nohlsearch
-set mouse=a
-set scrolloff=999
-set encoding=UTF-8
-set backspace=2
-set cursorline
-"set nofoldenable
-set foldmethod=syntax
-set foldlevelstart=1
+"if has('gui_running')
+    ""set background=light
+    "set background=dark
+"else
+    "set background=dark
+"endif
 "let g:rust_fold = 1
-set hidden
+"set nofoldenable
+set backspace=2
 set cmdheight=2
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
+set cursorline
+set encoding=UTF-8
+set foldlevelstart=1
+set foldmethod=syntax
+set hidden
 set ignorecase smartcase
 set incsearch
 set matchtime=5
+set mouse=a
 set nobackup
-set nowritebackup
+set nohlsearch
 set noswapfile
+set nowritebackup
 set number
 set ruler
+set scrolloff=999
 set shiftwidth=4
+set shortmess+=c
 set showmatch gdefault
+set signcolumn=yes
 set softtabstop=4
 set tabstop=4
+set termguicolors
+set updatetime=300
 set wildmenu
 "set wildmode=list,full
 syntax on

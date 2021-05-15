@@ -42,10 +42,10 @@ let g:neovide_cursor_vfx_mode = "sonicboom"
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 source $HOME/.local/config/vim/vimrc
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
-"colorscheme nord
-"let g:airline_theme='nord'
+"colorscheme gruvbox
+"let g:airline_theme='gruvbox'
+colorscheme nord
+let g:airline_theme='nord'
 
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -146,13 +146,13 @@ map <silent> <F1> :NERDTreeToggle<CR>
 nmap <silent> <F8> :Vista!!<CR>
 
 "let g:clap_theme = 'atom_dark'
-"let g:clap_theme = 'nord
+let g:clap_theme = 'nord'
 "let g:clap_theme = 'gruvbox'
 "let g:clap_theme = 'solarized_dark'
 "let g:clap_theme = 'material_design_dark'
 let g:clap_provider_alias={'rg':'grep'}
 let g:clap_layout = { 'relative': 'editor' }
-let g:clap_enable_background_shadow = v:false
+"let g:clap_enable_background_shadow = v:false
 
 
 nnoremap <silent> <C-p> :Clap<CR>
