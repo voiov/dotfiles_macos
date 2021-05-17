@@ -7,7 +7,7 @@ let coc_global_extensions=[
 			\ 'coc-eslint',
 			"\ 'coc-rls',
 			\ 'coc-rust-analyzer',
-			\ 'coc-imselect',
+			"\ 'coc-imselect',
 			\]
 " if hidden is not set, TextEdit might fail.
 set hidden

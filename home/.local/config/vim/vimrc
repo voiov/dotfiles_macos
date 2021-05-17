@@ -2,15 +2,12 @@
 "Date:		2017年 7月29日 星期六 15时32分16秒 CST
 " Vim options setting 
 
-
-
 "if has('gui_running')
     ""set background=light
     "set background=dark
 "else
     "set background=dark
 "endif
-"let g:rust_fold = 1
 "set nofoldenable
 set backspace=2
 set cmdheight=2
@@ -28,6 +25,7 @@ set nohlsearch
 set noswapfile
 set nowritebackup
 set number
+"set relativenumber
 set ruler
 set scrolloff=999
 set shiftwidth=4
@@ -39,7 +37,7 @@ set tabstop=4
 set termguicolors
 set updatetime=300
 set wildmenu
-"set wildmode=list,full
+"set wildmode=longest,full
 syntax on
 "if exists('$TMUX')
 	"set term=screen-256color
@@ -118,8 +116,8 @@ endfunction
 command! Bonly :call DeleteInactiveBufs()
 
 " Open in other edit tool
-command! OpenInCode :call job_start(['code',expand('%:p')])
-command! OpenInSubl :call job_start(['subl',expand('%:p')])
+"command! OpenInCode :call job_start(['code',expand('%:p')])
+"command! OpenInSubl :call job_start(['subl',expand('%:p')])
 
 function! DeleteEmptyBuffers()
     let [i, n; empty] = [1, bufnr('$')]
@@ -134,10 +132,5 @@ function! DeleteEmptyBuffers()
     endif
 endfunction
 command! BdeleteEmpty :call DeleteEmptyBuffers()
-
-" Open HTML file via webbrower
-if has('mac')
-au FileType html command! OpenByDefault :call job_start(['open',expand('%:p')])
-endif
 
 "============================================================================}}}

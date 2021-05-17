@@ -2,6 +2,10 @@ call plug#begin()
 "Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Shougo/denite.nvim'
 "Plug 'rust-lang/rust.vim'
+Plug 'airblade/vim-gitgutter'
+ " Select multiple same items
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -21,27 +25,24 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-"Plug 'vim-syntastic/syntastic'
+" Show error hints and highlights
+Plug 'vim-syntastic/syntastic'
 "Plug 'lervag/vimtex'
 "Plug 'voldikss/vim-floaterm'
 "debug tool
 "Plug  'puremourning/vimspector'
 call plug#end()            " required
-"neovide setting
-let g:neovide_transparency=0.9
-let g:neovide_cursor_antialiasing=v:true
-let g:neovide_cursor_vfx_mode = "sonicboom"
+
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 source $HOME/.local/config/vim/vimrc
+
 "colorscheme gruvbox
 "let g:airline_theme='gruvbox'
 colorscheme nord
@@ -61,58 +62,54 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
 let g:vista#renderer#enable_icon = 1
+
 let g:airline_powerline_fonts = 1
 " The default icons can't be suitable for all the filetypes, you can extend it as you wish.
-let g:vista#renderer#icons  = {
-\	 'global variable':"𝘎",
-\	 'struct field':"♋︎",
-\	 'struct':"𝒮",
-\	 'trait':"☣︎",
-\	 'type alias':"⎌",
-\	 'typeparameter':"☯︎",
-\    'augroup': "\ufb44",
-\    'class': "\uf0e8",
-\    'const': "𝐶",
-\    'constant': "𝐶",
-\    'default': "\uf29c",
-\    'enum': "❄︎",
-\    'enummember': "✢",
-\    'enumerator': "ℰ",
-\    'field': "⚦",
-\    'fields': "⚣",
-\    'func': "ℱ",
-\    'function': "ℱ",
-\    'functions':"ℱ",
-\    'implementation': "✏︎",
-\    'interface':"⎃" ,
-\    'macro': "♎︎",
-\    'macros': "♎︎",
-\    'maps': "⎂",
-\    'member': "\uf02b",
-\    'method': "☭",
-\    'module': "⏣",
-\    'modules': "🄼",
-\    'namespace': "\uf475",
-\    'package': "📦",
-\    'packages': "📦",
-\    'property': "\ufab6",
-\    'subroutine': "\uf9af",
-\    'target': "\uf893",
-\    'type': "🅃",
-\    'typedef': "🅃",
-\    'types': "🅃",
-\    'union': "\ufacd",
-\    'var': "♲",
-\    'variable':"♲",
-\    'variables':"♲",
-\}
+"let g:vista#renderer#icons  = {
+"\	 'global variable':"𝘎",
+"\	 'struct field':"♋︎",
+"\	 'struct':"𝒮",
+"\	 'trait':"☣︎",
+"\	 'type alias':"⎌",
+"\	 'typeparameter':"☯︎",
+"\    'augroup': "\ufb44",
+"\    'class': "\uf0e8",
+"\    'const': "𝐶",
+"\    'constant': "𝐶",
+"\    'default': "\uf29c",
+"\    'enum': "❄︎",
+"\    'enummember': "✢",
+"\    'enumerator': "ℰ",
+"\    'field': "⚦",
+"\    'fields': "⚣",
+"\    'func': "ℱ",
+"\    'function': "ℱ",
+"\    'functions':"ℱ",
+"\    'implementation': "✏︎",
+"\    'interface':"⎃" ,
+"\    'macro': "♎︎",
+"\    'macros': "♎︎",
+"\    'maps': "⎂",
+"\    'member': "\uf02b",
+"\    'method': "☭",
+"\    'module': "⏣",
+"\    'modules': "🄼",
+"\    'namespace': "\uf475",
+"\    'package': "📦",
+"\    'packages': "📦",
+"\    'property': "\ufab6",
+"\    'subroutine': "\uf9af",
+"\    'target': "\uf893",
+"\    'type': "🅃",
+"\    'typedef': "🅃",
+"\    'types': "🅃",
+"\    'union': "\ufacd",
+"\    'var': "♲",
+"\    'variable':"♲",
+"\    'variables':"♲",
+"\}
 "nmap <C-]> <Plug>(coc-definition)
 "let g:go_def_mapping_enabled = 0
-"let g:syntastic_rust_checkers = ['cargo']
-
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 "EditorConfig 
 let g:indentLine_char_list = ['┊', '┆', '¦', '|']
@@ -121,14 +118,11 @@ let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '˽'
 "let g:indentLine_leadingSpaceChar = '✂︎'
 
-"set leaderF
-"let g:Lf_WindowPosition = 'popup'
-"let g:Lf_PreviewInPopup = 1
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 let g:EasyMotion_smartcase = 1
 " <Leader>f{char} to move to {char}
@@ -141,11 +135,9 @@ map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 let g:NERDTreeShowBookmarks = 1
-map <silent> <F1> :NERDTreeToggle<CR>
-"let g:vista_default_executive='coc'
-nmap <silent> <F8> :Vista!!<CR>
+"map <silent> <F1> :NERDTreeToggle<CR>
+let g:vista_default_executive='coc'
 
-"let g:clap_theme = 'atom_dark'
 let g:clap_theme = 'nord'
 "let g:clap_theme = 'gruvbox'
 "let g:clap_theme = 'solarized_dark'
@@ -153,7 +145,6 @@ let g:clap_theme = 'nord'
 let g:clap_provider_alias={'rg':'grep'}
 let g:clap_layout = { 'relative': 'editor' }
 "let g:clap_enable_background_shadow = v:false
-
 
 nnoremap <silent> <C-p> :Clap<CR>
 source $HOME/.local/config/vim/coc.vimrc
@@ -254,3 +245,9 @@ nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 "nmap <C-p> <Plug>MarkdownPreviewToggle
 
+" Remaps
+nmap <Leader>p :Rg<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
+autocmd FileType markdown	noremap <buffer> <Leader>t :Vista toc<CR>
+autocmd FileType rust,go,javascript,css,typescript noremap <buffer> <Leader>t :Vista!!<CR>
