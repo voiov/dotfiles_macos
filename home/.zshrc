@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 if [ -d $HOME/.zfunc ];then
 	fpath+=~/.zfunc
 fi
@@ -24,20 +17,12 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-	zsh-users/zsh-autosuggestions\
-	zdharma/fast-syntax-highlighting
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 	### End of Zinit's installer chunk
-	zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-	zinit ice blockf; zinit light zsh-users/zsh-completions
-
-	zinit snippet OMZL::git.zsh
-	zinit snippet OMZP::git 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+zinit ice blockf; zinit light zsh-users/zsh-completions
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git 
 
 if [[ `command -v starship` ]]; then
 	eval "$(starship init zsh)"
@@ -47,7 +32,8 @@ fi
 if [[ `command -v zoxide` ]]; then
 	eval "$(zoxide init zsh)"
 fi
-
+## if not bindkey -e ,in tmux will work wrong 
+bindkey -e
 source ~/.profile
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

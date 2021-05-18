@@ -41,6 +41,7 @@ call plug#end()            " required
 
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
+
 source $HOME/.local/config/vim/vimrc
 
 "colorscheme gruvbox
