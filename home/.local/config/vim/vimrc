@@ -39,14 +39,32 @@ set updatetime=300
 set wildmenu
 "set wildmode=longest,full
 syntax on
-"if exists('$TMUX')
-	"set term=screen-256color
-"endif
+
+if $TERM =~ '^\(rxvt\|screen\|interix\|putty\)\(-.*\)\?$'
+	set notermguicolors
+elseif $TERM =~ '^\(tmux\|iterm\|vte\|gnome\)\(-.*\)\?$'
+	set termguicolors
+elseif $TERM =~ '^\(xterm\)\(-.*\)\?$'
+	if $XTERM_VERSION != ''
+		set termguicolors
+	elseif $KONSOLE_PROFILE_NAME != ''
+		set termguicolors
+	elseif $VTE_VERSION != ''
+		set termguicolors
+	else
+		set notermguicolors
+	endif
+elseif $TERM =~ ...
+	... and so forth ...
+endif
+
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "防止粘贴文本自动加上注释
 "set completeopt=longest,menuone
 "----------键盘映射
 let mapleader ="\<Space>"
+
 tnoremap <Esc> <C-\><C-n>
+map <C-t> :terminal<CR>
 
 "----------快速窗口切换{{{
 nnoremap <C-k> <C-w>k
@@ -81,6 +99,7 @@ nnoremap <silent> [T     :tabfirst<CR>
 nnoremap <silent> ]T     :tablast<CR>
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :q<CR>
+nnoremap <silent> <leader>x :bd<CR>
 nnoremap <silent> <leader>Q :q!<CR>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
@@ -134,3 +153,9 @@ endfunction
 command! BdeleteEmpty :call DeleteEmptyBuffers()
 
 "============================================================================}}}
+" auto jump last modified line
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+

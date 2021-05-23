@@ -6,14 +6,15 @@ Plug 'airblade/vim-gitgutter'
  " Select multiple same items
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'bling/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -27,12 +28,17 @@ Plug 'lifepillar/vim-gruvbox8'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'rizzatti/dash.vim'
+"Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Show error hints and highlights
 Plug 'vim-syntastic/syntastic'
+Plug 'dhruvasagar/vim-table-mode'
 "Plug 'lervag/vimtex'
 "Plug 'voldikss/vim-floaterm'
 "debug tool
@@ -44,10 +50,10 @@ let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 
 source $HOME/.local/config/vim/vimrc
 
-"colorscheme gruvbox
+colorscheme gruvbox
 "let g:airline_theme='gruvbox'
-colorscheme nord
-let g:airline_theme='nord'
+"colorscheme nord
+"let g:airline_theme='nord'
 
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -65,50 +71,7 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista#renderer#enable_icon = 1
 
 let g:airline_powerline_fonts = 1
-" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
-"let g:vista#renderer#icons  = {
-"\	 'global variable':"𝘎",
-"\	 'struct field':"♋︎",
-"\	 'struct':"𝒮",
-"\	 'trait':"☣︎",
-"\	 'type alias':"⎌",
-"\	 'typeparameter':"☯︎",
-"\    'augroup': "\ufb44",
-"\    'class': "\uf0e8",
-"\    'const': "𝐶",
-"\    'constant': "𝐶",
-"\    'default': "\uf29c",
-"\    'enum': "❄︎",
-"\    'enummember': "✢",
-"\    'enumerator': "ℰ",
-"\    'field': "⚦",
-"\    'fields': "⚣",
-"\    'func': "ℱ",
-"\    'function': "ℱ",
-"\    'functions':"ℱ",
-"\    'implementation': "✏︎",
-"\    'interface':"⎃" ,
-"\    'macro': "♎︎",
-"\    'macros': "♎︎",
-"\    'maps': "⎂",
-"\    'member': "\uf02b",
-"\    'method': "☭",
-"\    'module': "⏣",
-"\    'modules': "🄼",
-"\    'namespace': "\uf475",
-"\    'package': "📦",
-"\    'packages': "📦",
-"\    'property': "\ufab6",
-"\    'subroutine': "\uf9af",
-"\    'target': "\uf893",
-"\    'type': "🅃",
-"\    'typedef': "🅃",
-"\    'types': "🅃",
-"\    'union': "\ufacd",
-"\    'var': "♲",
-"\    'variable':"♲",
-"\    'variables':"♲",
-"\}
+
 "nmap <C-]> <Plug>(coc-definition)
 "let g:go_def_mapping_enabled = 0
 
@@ -124,7 +87,54 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+set showtabline=2
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#enable_nerdfont = 1
+"let g:lightline#bufferline#auto_hide = 10000
+let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[No Name]'
+let g:lightline = {
+			\ 'colorscheme': 'wombat',
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
+			\	'right': [ [ 'percent' ],[ 'lineinfo' ],
+			\              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+			\ },
+			\ 'component': {
+			\   'charvaluehex': '0x%B'
+			\ }
+			\ }
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>c4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>c5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>c6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
+
+
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 let g:EasyMotion_smartcase = 1
 " <Leader>f{char} to move to {char}
 nmap <Leader>f <Plug>(easymotion-overwin-f)

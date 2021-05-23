@@ -117,6 +117,7 @@ font:
 
     # The `style` can be specified to pick a specific face.
     style: Regular
+    
 
   # Bold font face
   bold:
@@ -124,7 +125,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: VictorMono Nerd Font
+    family: VictorMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -146,7 +147,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: VictorMono Nerd Font
+    family: VictorMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -363,7 +364,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.7
+background_opacity: 0.9
 
 selection:
   # This string contains all characters that are used as separators for
@@ -461,7 +462,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
 
-  url:
+  hints:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a

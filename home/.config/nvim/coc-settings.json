@@ -15,6 +15,7 @@
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"coc.preferences.colorSupport": true,
 	"coc.preferences.maxFileSize": "102400",
+	"imselect.defaultInput": "com.apple.keylayout.ABC",
 	"suggest.noselect": false,
 	"diagnostic.messageTarget": "float",
 	"diagnostic.virtualText": false,
