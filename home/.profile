@@ -36,6 +36,7 @@ if [[ `command -v exa` ]]; then
 	alias   l1="ls -l -h -T -L1"
 	alias	l2="ls -l -h -T -L2"
 	alias	l3="ls -l -h -T -L3"
+	alias	l4="ls -l -h -T -L4"
 	alias	lt="l2"
 fi
 
