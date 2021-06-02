@@ -2,13 +2,6 @@
 "Date:		2017年 7月29日 星期六 15时32分16秒 CST
 " Vim options setting 
 
-"if has('gui_running')
-    ""set background=light
-    "set background=dark
-"else
-    "set background=dark
-"endif
-"set nofoldenable
 set backspace=2
 set cmdheight=2
 set cursorline

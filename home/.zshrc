@@ -47,3 +47,5 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 	#compinit
 	#fi
 
+
+alias luamake=/Users/zaki/.config/lua-language-server/3rd/luamake/luamake

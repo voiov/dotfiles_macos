@@ -31,7 +31,7 @@ fi
 
 if [[ `command -v exa` ]]; then
 	alias	ls="exa"
-	alias   l="ls -l  -h -T -L1"
+	alias   l="ls -l  -a -h -T -L1"
 	alias   ll="ls -l -a  -G"
 	alias   l1="ls -l -h -T -L1"
 	alias	l2="ls -l -h -T -L2"
@@ -42,7 +42,6 @@ fi
 
 if [[ `command -v nvim` ]]; then
 	alias	vi=nvim
-	alias	vim=nvim
 fi
 
 # Set ENV
@@ -50,6 +49,7 @@ export	PATH="$PATH:$HOME/.local/bin"
 export	PATH="/usr/local/sbin:$PATH"
 export	FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 # 支持在 VS Code 里用 ctrl+o 来打开选择的文件
+export  VISUAL="nvim"
 export	EDITOR="nvim"
 
 # HOMESHICK
