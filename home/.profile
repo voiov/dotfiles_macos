@@ -33,10 +33,10 @@ if [[ `command -v exa` ]]; then
 	alias	ls="exa"
 	alias   l="ls -l  -a -h -T -L1"
 	alias   ll="ls -l -a  -G"
-	alias   l1="ls -l -h -T -L1"
-	alias	l2="ls -l -h -T -L2"
-	alias	l3="ls -l -h -T -L3"
-	alias	l4="ls -l -h -T -L4"
+    for i ({1..10}){
+
+        alias l$i="ls -l -h -T -L$i"
+    }
 	alias	lt="l2"
 fi
 
